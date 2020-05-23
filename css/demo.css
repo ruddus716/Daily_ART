@@ -1,0 +1,106 @@
+html {
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  font-size: 0.875rem;
+  line-height: 1.42857143;
+  color: #333;
+}
+
+header {
+  position: relative;
+  /*top: 0;
+  left: 0;*/
+  z-index: 999;
+
+  width: 100%;
+  height: 50px;
+
+  background: #eee;
+  box-shadow: rgba(0, 0, 0, 0.5) 0 -20px 20px 20px;
+}
+
+header h1 {
+  margin: 0;
+  padding: 0 15px;
+  height: 50px;
+  line-height: 50px;
+  font-weight: 400;
+  font-size: 18px;
+  float: left;
+}
+
+.wrapper {
+  /*margin-top: 50px;*/
+  padding: 15px 30px;
+  transition: all 0.3s ease-out;
+}
+
+.clearfix:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+
+/* Small devices (tablets)
+==========================*/
+@media (min-width: 768px) {
+
+}
+
+
+/* Medium devices (desktops)
+==========================*/
+@media (min-width: 992px) {
+
+  body {
+    overflow-y: scroll;
+  }
+
+  .logo img {
+    width: 200px;
+    text-align: center;
+    margin-top: 10px;
+    float: none;
+  }
+
+  .wrapper {
+    margin-left: 200px;
+  }
+
+  .wrapper__minify {
+    margin-left: 50px;
+  }
+
+.button {
+  background-color: #DB2828; /* red */
+  border: none;
+  color: white;
+  padding: 25px 42px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.button2 {background-color: #F2711C;} /* orange */
+.button3 {background-color: #FBBD08;} /* yellow */ 
+.button4 {background-color: #e7e7e7; color: black;} /* Gray */ 
+.button5 {background-color: #555555;} /* Black */
+.button6 {background-color: #B5CC18;} /* Black */
+.button7 {background-color: #21BA45;} /* Black */
+.button8 {background-color: #00B5AD;} /* Black */
+.button9 {background-color: #2185D0;} /* Black */
+.button10 {background-color: #6435C9;} /* Black */
+.button11 {background-color: #A333C8;} /* Black */
+.button12 {background-color: #E03997;} /* Black */
+
+
+
+}

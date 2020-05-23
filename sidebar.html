@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<body>
+
+<!-- Sidebar -->
+<!--onclick="location.href='여기에 이동할 페이지 주소를 넣으면 됨' "-->
+<div class="w3-sidebar w3-bar-block w3-animate-left" style="display:none;z-index:5" id="mySidebar">
+  <button class="w3-bar-item w3-button w3-light-grey w3-hover-green w3-large w3-padding-24" onclick="w3_close()">Menu &times;</button>
+  <a onclick="location.href='home.html' " class="w3-bar-item w3-button w3-hover-green w3-large w3-padding-24"><i class="fa fa-home"></i> Home</a>
+  <a onclick="location.href='search.html' " class="w3-bar-item w3-button w3-hover-green w3-large w3-padding-24"><i class="fa fa-search"></i> Search</a>
+  <a onclick="location.href='news.html' " class="w3-bar-item w3-button w3-hover-green w3-large w3-padding-24"><i class="fa fa-newspaper-o"></i> News</a>
+  <a onclick="location.href='recommend.html' "href="#" class="w3-bar-item w3-button w3-hover-green w3-large w3-padding-24"><i class="fa fa-thumbs-o-up"></i> Recommend</a>
+  <a href="#" class="w3-bar-item w3-button w3-hover-green w3-large w3-padding-24"><i class="fa fa-cog"></i> Settings</a>
+
+</div>
+
+<!-- Page Content -->
+<div class="w3-overlay w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay"></div>
+
+<div>
+  <button class="w3-button w3-white w3-xxlarge" onclick="w3_open()">&#9776;</button>
+</div>
+<!-- Sidebar open&close -->
+<script>
+function w3_open() {
+  document.getElementById("mySidebar").style.width = "25%"
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("myOverlay").style.display = "block";
+}
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("myOverlay").style.display = "none";
+}
+</script>
+
+</body>
+</html>

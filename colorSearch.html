@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset=utf-8>
+  <title>ARTSTAGRAM</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700,900' rel='stylesheet' type='text/css'>
+  <link rel='stylesheet prefetch' href='https://npmcdn.com/basscss@8.0.0/css/basscss.min.css'>
+  <link href="css/colorSearch.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+  <script src="js/colorSearch.js"></script>
+  <link href='https://cdn.rawgit.com/openhiun/hangul/14c0f6faa2941116bb53001d6a7dcd5e82300c3f/nanumbarungothic.css'
+    rel='stylesheet' type='text/css'>
+  <style>
+    #app-title {
+      font-family: 'Bebas Neue';
+      color: #4e85f4;
+      font-size: 80px;
+      width: 100%;
+      text-align: center;
+    }
+
+    #topbar {
+      background-color: white;
+      border: 0;
+      box-shadow: 1px 1px 10px 10px #cccccc;
+    }
+
+    #nav {
+      width: 100%;
+    }
+
+    div.content {
+      background-color: #f5f5f5;
+      font-family: 'NanumBarunGothic';
+    }
+  </style>
+</head>
+
+
+<body>
+  <div class="content">
+    <script type="text/javascript">
+      window.onload = function () {
+        data_load1();
+        data_load2();
+        data_load3();
+        data_load4();
+      }
+    </script>
+    <div class="content">
+      <nav id="topbar" class="navbar ">
+        <div class="container-fluid">
+          <div id=login name=login>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="config.php"><span class="glyphicon glyphicon-user"></span><?php echo($row['usrID']);?></a>
+              </li>
+              <li><a href="logout.php"><span class="glyphicon glyphicon-log-in"></span>Logout</a></li>
+            </ul>
+          </div>
+          <div id=logout name=logout>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="SignUp2.php"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+              <li><a href="signIn.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            </ul>
+          </div>
+
+          <div id="app-title" class="navbar-header">
+            <a href="#">ARTSTAGRAM</a>
+          </div>
+          <ul id="nav" class="nav navbar-nav" style="font-family: 'NanumBarunGothic', 'serif';">
+            <li class="navitem"><a href="gallery.php">나의 갤러리</a></li>
+            <li class="active navitem"><a href="main.php">Home</a></li>
+            <li class="navitem"><a href="colorSearch.html">탐색</a></li>
+            <li class="navitem"><a href="index_time.php">포럼</a></li>
+          </ul>
+        </div>
+    </div>
+    </nav>
+
+  </div>
+
+  </nav>
+
+  <div style="margin-left: 10%;margin-right: 10%;">
+    <div>
+      <h1 style="font-family:'NanumBarunGothic', 'serif';">색상, 시대로 탐색하기</h1>
+      <h3 style="font-family:'NanumBarunGothic', 'serif'; color: #707070">색상, 시대에 따라 예술작품을 탐색해 보세요.</h3>
+
+      <button class="button button_white fil-cat" data-rel="White"></button>
+      <button class="button button_yellow fil-cat" data-rel="Yellow"></button>
+      <button class="button button_green fil-cat" data-rel="Green"></button>
+      <button class="button button_blue fil-cat" data-rel="Blue"></button>
+      <button class="button button_purple fil-cat" data-rel="Purple"></button>
+      <button class="button button_black fil-cat" data-rel="Black"></button>
+      <!-- <button class="button button_black"></button>
+    <button class="button button_black"></button> -->
+    </div>
+    <form class="navbar-form navbar-left" method="post" action="action.php">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search" name="search">
+        <div class="input-group-btn">
+          <button class="btn btn-default" type="submit">
+            <i class="glyphicon glyphicon-search"></i>
+          </button>
+        </div>
+      </div>
+    </form>
+    <div class="toolbar mb2 mt2">
+      <button class="btn fil-cat" href="" data-rel="all">All</button>
+
+      <button class="btn fil-cat" data-rel="1">르네상스</button>
+      <button class="btn fil-cat" data-rel="2">로코코</button>
+      <button class="btn fil-cat" data-rel="3">근대미술</button>
+      <button class="btn fil-cat" data-rel="4">현대미술</button>
+
+    </div>
+
+    <!-- <div style="overflow:scroll; height:800px" >
+ -->
+    <div id="portfolio">
+      <div class="tile scale-anm web bcards all">
+        <img src="https://www.medicalnewstoday.com/content/images/articles/322/322868/golden-retriever-puppy.jpg"
+          alt="" />
+      </div>
+
+    </div>
+  </div>
+  <div style="clear:both;"></div>
+
+</body>
+
+</html>

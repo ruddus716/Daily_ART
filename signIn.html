@@ -1,0 +1,190 @@
+<html>
+<head>
+<link href='https://cdn.rawgit.com/openhiun/hangul/14c0f6faa2941116bb53001d6a7dcd5e82300c3f/nanumbarungothic.css' rel='stylesheet' type='text/css'>
+
+<!---------------------------------------------->
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="809152103277-sc68misi9b6725v2agoi1cq2ffsn81lr.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <!---------------------------------------------->
+<link href="https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+#circle {
+width:300px;
+height:300px;
+border-radius:50%;
+text-align:center;
+margin:0 auto;
+box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.8);
+background-image:url("https://upload.wikimedia.org/wikipedia/commons/6/68/Vincent_van_Gogh_-_Almond_blossom_-_Google_Art_Project.jpg");
+background-size:500px;
+}
+.center {
+width:250px;
+height:50px;
+text-align:center;
+margin:0 auto;
+}
+.button {
+  border: none;
+  width:240px;
+  height:50px;
+  border-width:1px;
+  border-style:solid;
+  margin-left:-10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-weight:bold;
+  cursor: pointer;
+  box-shadow: 0px 0px 10px -6px rgba(0, 0, 0, 0.8);
+  padding:0px;
+  font-family:Roboto-Medium;
+}
+.google{
+  background-color: #FFFFFF;
+  color:#FFFFFF;
+  border-color:#4285F4;
+}
+.email{
+  background-color: #FFFFFF;
+  color:#48494d;
+  border-color:gray;
+}
+.fb {
+  background-color: #FFFFFF;
+  color:#FFFFFF;
+  border-color:#3b5998;
+}
+.fbsvg{
+	fill:#3b5998;
+    padding-top:12px;
+}
+.googlesvg{
+	width:18px;
+    height:18px;
+    padding-top:16px;
+}
+
+.logo{
+background-color:#FFFFFF;
+float:left;
+width:48px;
+height:49px;
+}
+.fbtext{
+  background-color:#3b5998;
+  height:50px;
+  line-height:50px;
+  text-align: center;
+}
+.googletext{
+  background-color:#4285F4;
+  height:50px;
+  line-height:50px;
+  text-align: center;
+}
+
+.hoverFb:hover{ 
+ box-shadow: 1px 1px 4px 1px #3b5998;
+ }
+.hoverEmail:hover{ 
+background-color:gray;
+color:#FFFFFF;
+}
+</style>
+	
+</head>
+<body>
+<div style="padding:30px"></div>
+
+<h1 style="text-align:center;font-weight:bold; font-size:80px; font-family:'Bebas Neue'; color:#4c8bf5">ARTSTAGRAM</h1>
+<div id="circle"></div>
+<div style="padding-top:50px">
+<div class="center">
+<div style="padding-top:10px;">
+
+
+
+
+
+
+
+
+<!--------google button--------->
+
+<div id="my-signin2"></div>
+  <script>
+    function onSuccess(googleUser) {
+      console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+    }
+    function onFailure(error) {
+      console.log(error);
+    }
+    function renderButton() {
+      gapi.signin2.render('my-signin2', {
+        'scope': 'profile email',
+        'width': 240,
+        'height': 50,
+        'longtitle': true,
+        'theme': 'dark',
+        'onsuccess': onSuccess,
+        'onfailure': onFailure
+      });
+    }
+  </script>
+
+  <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+	
+	<div style="padding-top:25px"></div>
+	
+	
+    <!-----------------fb-------------->
+	<div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v5.0&appId=716306872213242&autoLogAppEvents=1"></script>
+	<div class="fb-login-button" data-width="" data-size="large" data-button-type="continue_with" data-auto-logout-link="false" data-use-continue-as="false"></div>
+
+
+
+    <script>
+    
+
+  window.fbAsyncInit = function() {
+    FB.init({
+        appId: '716306872213242',
+      cookie     : true,
+      xfbml      : true,
+      version    : 'v5.0'
+    });
+
+    FB.AppEvents.logPageView();
+
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+
+    <!-----------------fb-------------->
+
+
+
+<p>---------------- OR ----------------</p>
+<input type="button" class="button email hoverEmail" value="Sign in with Email" onClick="location.href='signIn2.html'">
+<div>
+<p>-------------- Sign Up -------------</p>
+<input type="button" class="button email hoverEmail" value="Sign Up" onClick="location.href='signUp.html'">
+    </div>
+
+
+
+
+</body>
+</html>

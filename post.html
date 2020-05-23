@@ -1,0 +1,380 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset=utf-8>
+	<meta name=description content="">
+	<meta name=viewport content="width=device-width, initial-scale=1">
+
+	<!-- Styles -->
+	<link rel="stylesheet" type="text/css" href="css/jquery-comments.css">
+	<link rel="stylesheet" type="text/css"
+		href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<!-- Data -->
+	<script type="text/javascript" src="data/comments-data.js"></script>
+
+	<!-- Libraries -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+	<script type="text/javascript"
+		src="https://cdnjs.cloudflare.com/ajax/libs/jquery.textcomplete/1.8.0/jquery.textcomplete.js"></script>
+	<script type="text/javascript" src="js/jquery-comments.js"></script>
+	<link href='https://cdn.rawgit.com/openhiun/hangul/14c0f6faa2941116bb53001d6a7dcd5e82300c3f/nanumbarungothic.css'
+		rel='stylesheet' type='text/css'>
+	<style type="text/css">
+		body {
+			margin: 0px;
+			font-size: 14px;
+			font-family: 'NanumBarunGothic', 'serif';
+
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function () {
+			var url_id = getQueryVariable("id");
+			addimg(getQueryVariable("id"));
+			desc_load(getQueryVariable("id"));
+			random_pic();
+			function getQueryVariable(variable) {
+				var query = window.location.search.substring(1);
+				var vars = query.split("&");
+				for (var i = 0; i < vars.length; i++) {
+					var pair = vars[i].split("=");
+					if (pair[0] == variable) { return pair[1]; }
+				}
+				return (false);
+			}
+
+
+			function addimg(id) {
+				var div = document.getElementById("content_img");
+				var img = document.createElement("img");
+				//img.src = data['images'];//변수 
+				img.setAttribute("src", "data/" + getQueryVariable("id") + ".jpg");//고유값
+				img.setAttribute("style", "  width: 50%; height: 50%");//고유값
+
+				div.appendChild(img);
+
+			}
+		}
+	</script>
+	<!-- Init jquery-comments -->
+	<script type="text/javascript">
+		$(function () {
+			var saveComment = function (data) {
+
+				// Convert pings to human readable format
+				$(Object.keys(data.pings)).each(function (index, userId) {
+					var fullname = data.pings[userId];
+					var pingText = '@' + fullname;
+					data.content = data.content.replace(new RegExp('@' + userId, 'g'), pingText);
+
+				});
+
+				return data;
+			}
+			init();
+			if (1) {
+				$('#comments-container').comments({
+					profilePictureURL: 'https://viima-app.s3.amazonaws.com/media/public/defaults/user-icon.png',
+					currentUserId: 1,
+					roundProfilePictures: true,
+					textareaRows: 1,
+					enableAttachments: true,
+					enableHashtags: true,
+					enablePinging: true,
+					searchUsers: function (term, success, error) {
+						setTimeout(function () {
+							success(usersArray.filter(function (user) {
+								var containsSearchTerm = user.fullname.toLowerCase().indexOf(term.toLowerCase()) != -1;
+								var isNotSelf = user.id != 1;
+								return containsSearchTerm && isNotSelf;
+							}));
+						}, 500);
+					},
+					getComments: function (success, error) {
+						setTimeout(function () {
+							success(commentsArray);
+						}, 500);
+					},
+					postComment: function (data, success, error) {
+						setTimeout(function () {
+							success(saveComment(data));
+						}, 500);
+					},
+					putComment: function (data, success, error) {
+						setTimeout(function () {
+							success(saveComment(data));
+						}, 500);
+					},
+					deleteComment: function (data, success, error) {
+						setTimeout(function () {
+							success();
+						}, 500);
+					},
+					upvoteComment: function (data, success, error) {
+						setTimeout(function () {
+							success(data);
+						}, 500);
+					},
+					uploadAttachments: function (dataArray, success, error) {
+						setTimeout(function () {
+							success(dataArray);
+						}, 500);
+					},
+				})
+			};
+		});
+
+	</script>
+
+</head>
+
+<body>
+	<style>
+		#app-title {
+			font-family: 'Bebas Neue';
+			color: #4e85f4;
+			font-size: 80px;
+			width: 100%;
+			text-align: center;
+		}
+
+		#topbar {
+			background-color: white;
+			border: 0;
+			box-shadow: 1px 1px 10px 10px #cccccc;
+		}
+
+		#nav {
+			width: 100%;
+		}
+
+		div.content {
+			background-color: #f5f5f5;
+			font-family: 'NanumBarunGothic';
+		}
+	</style>
+    <div class="content">
+		<nav id="topbar" class="navbar ">
+		  <div class="container-fluid">
+			<div id=login name=login>
+			  <ul class="nav navbar-nav navbar-right">
+				<li><a href="config.php"><span class="glyphicon glyphicon-user"></span><?php echo($row['usrID']);?></a>
+				</li>
+				<li><a href="logout.php"><span class="glyphicon glyphicon-log-in"></span>Logout</a></li>
+			  </ul>
+			</div>
+			<div id=logout name=logout>
+			  <ul class="nav navbar-nav navbar-right">
+				<li><a href="SignUp2.php"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+				<li><a href="signIn.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+			  </ul>
+			</div>
+  
+			<div id="app-title" class="navbar-header">
+			  <a href="#">ARTSTAGRAM</a>
+			</div>
+			<ul id="nav" class="nav navbar-nav" style="font-family: 'NanumBarunGothic', 'serif';">
+			  <li class="navitem"><a href="gallery.php">나의 갤러리</a></li>
+			  <li class="active navitem"><a href="main.php">Home</a></li>
+			  <li class="navitem"><a href="colorSearch.html">탐색</a></li>
+			  <li class="navitem"><a href="index_time.php">포럼</a></li>
+			</ul>
+		  </div>
+	  </div>
+	  </nav>
+  
+	</div>
+	<div id="comments-container" class="comments-container" style="margin-right: 10%;margin-left: 5%;"></div>
+	<div id="content_img" style="margin-left: 10%; ">
+
+	</div>
+	<div style="margin-left: 10%; border: white; margin-top: 50px;  margin-right: 45%; padding-inline: 5%;">
+		<div id="desc">
+
+
+
+		</div>
+		<button class="btn btn-primary btn-lg" onclick="cid_insert()">LIKED</button>
+		<script>
+			function cid_insert() {
+				var url_id = getQueryVariable("id");
+				$.ajax(
+					{
+						type: 'POST',
+						url: "php/cliped_insert.php",
+						dataType: "json",
+						data: {
+
+							c_id: url_id
+
+						},
+
+						success: function (data, status, xhr) {
+							alert("내 갤러리에 추가했습니다!");
+
+
+						},
+						error: function (jqXHR, textStatus, errorThrown) { console.log(jqXHR.responseText); }
+					});
+
+
+			}
+		
+			function getQueryVariable(variable) {
+				var query = window.location.search.substring(1);
+				var vars = query.split("&");
+				for (var i = 0; i < vars.length; i++) {
+					var pair = vars[i].split("=");
+					if (pair[0] == variable) { return pair[1]; }
+				}
+				return (false);
+			}
+
+		</script>
+
+		<div id="recom">
+			추천 이미지
+
+		</div>
+	</div>
+	<style>
+		* {
+			box-sizing: none;
+		}
+
+		#about {
+			padding: 50px 20px;
+			border-bottom: 1px solid black;
+		}
+
+		.container {
+			color: black;
+			overflow: hidden;
+		}
+
+		.comments-container {
+			width: 30%;
+			float: right;
+
+		}
+
+		.title h2 {
+			text-align: center;
+			font-size: 2.2rem;
+			font-family: 'Source Sans Pro', sans-serif;
+		}
+
+		.title h2:after {
+			display: block;
+			width: 15%;
+			content: '';
+			border-bottom: 1px solid #3498db;
+			margin: 15px auto;
+		}
+
+		.content_img {
+			width: 70%;
+			float: left;
+
+		}
+
+		.content p {
+			line-height: 1.4rem;
+			font-family: 'Source Sans Pro', sans-serif;
+			color: gray;
+		}
+	</style>
+	<script>
+
+		function random_pic() {
+
+			var random1 = Math.floor(Math.random() * 30);
+			var random2 = Math.random() * (249 - 233) + 233;
+			random2 = parseInt(random2, 10);
+			var random3 = Math.random() * (277 - 257) + 257;
+			random3 = parseInt(random3, 10);
+			var div = document.getElementById("recom");
+			var img = document.createElement("img");
+			var img2 = document.createElement("img");
+			var img3 = document.createElement("img");
+
+			img.setAttribute("src", "data/" + random1 + ".jpg");//고유값
+			img.setAttribute('onClick', 'window.location.href="http://35.206.125.75/OPENSW_ART/post.html?id=' + random1 + '"');
+			img.setAttribute("style", "width: 100px; height: 100px;");//고유값
+			div.appendChild(img);
+
+			img2.setAttribute("src", "data/" + random2 + ".jpg");//고유값
+			img2.setAttribute('onClick', 'window.location.href="http://35.206.125.75/OPENSW_ART/post.html?id=' + random2 + '"');
+			img2.setAttribute("style", "width: 100px; height: 100px;");//고유값
+			div.appendChild(img2);
+
+			img3.setAttribute("src", "data/" + random3 + ".jpg");//고유값
+			img3.setAttribute('onClick', 'window.location.href="http://35.206.125.75/OPENSW_ART/post.html?id=' + random3 + '"');
+			img3.setAttribute("style", "width: 100px; height: 100px;");//고유값
+			div.appendChild(img3);
+
+		}
+
+		function desc_load(id) {
+			$.ajax(
+				{
+					type: 'POST',
+					url: "php/desc_load.php",
+					dataType: "json",
+					data: {
+						id: id,
+
+					},
+
+					success: function (data, status, xhr) {
+
+						//for (var i = 0; i < 5; i++) {//json length
+						var div = document.getElementById("desc");
+						var p_title = document.createElement("h3");
+						p_title.innerHTML = data[0]["title"];
+						var p_desc = document.createElement("p");
+						p_desc.innerHTML = data[0]["description"];
+						var p_artist = document.createElement("p");
+						p_artist.innerHTML = data[0]["artist"];
+						var p_color = document.createElement("p");
+						p_color.innerHTML = data[0]["color"];
+						var p_times = document.createElement("p");
+						p_times.innerHTML = "#" + data[0]["times"];
+						var p_tag = document.createElement("p");
+						p_tag.innerHTML = "#" + data[0]["tag"];
+						var p_year = document.createElement("p");
+						p_year.innerHTML = "#" + data[0]["year"];
+
+						// var cliped = document.createElement("h3");
+						// cliped.innerHTML = "Liked: " + Math.floor(Math.random() * 50);
+						// var viewed = document.createElement("h3");
+						// viewed.innerHTML = " Viewed: " + Math.floor(Math.random() * 100);
+
+						div.appendChild(p_title);
+						div.appendChild(p_artist);
+						div.appendChild(p_desc);
+						div.appendChild(p_times);
+						div.appendChild(p_tag);
+						div.appendChild(p_year);
+
+						div.appendChild(cliped);
+						div.appendChild(viewed);
+
+						console.log(data);
+						//}
+
+
+
+
+					},
+					error: function (jqXHR, textStatus, errorThrown) { console.log(jqXHR.responseText); }
+				});
+
+
+		}
+	</script>
+</body>
+
+</html>
